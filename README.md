@@ -18,4 +18,4 @@ To declare a variable following code can be added:
 
 ## Running the script
 
-Running the script will pop-up a dialog to let you choose a input file. Currently .gcode and .txt are supported but others are easy to add. Once completed, the script should have created a new file with the initial filename extended by "_output".
+Running the script will pop-up a dialog to let you choose a input file. Once completed, the script should have created a new file with the initial filename extended by "_output" in the same directory as the initial file.
