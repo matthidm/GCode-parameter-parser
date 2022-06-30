@@ -31,5 +31,4 @@ To declare a variable following code can be added:
 * Note that the semicolon is used to start a comment, this comment is kept after parsing to later refer to the used variables.
 * Watch out: "VAR" should be uppercase, followed by a space, the name of the variable, a space and the value (integer or float). 
 
-## Running the script
 Running the script will pop-up a dialog to let you choose a input file(s). Afterwards, ER and ZH will be asked to define using a new dialog. Once completed, the script should have created a new file(s) with the initial filename(s) extended by "_output" in the same directory as the initial file(s).
