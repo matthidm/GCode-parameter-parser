@@ -4,6 +4,7 @@ import math
 from tkinter import Tk
 from tkinter.filedialog import askopenfilenames
 import argparse
+from tkinter.simpledialog import askfloat
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-F', '--filename',
@@ -72,12 +73,6 @@ def parse_file(filename:str, params:dict = dict()):
 
 def main():
     args = parser.parse_args()
-
-    if args.input_file:
-        input_files = [file for file in args.input_file if os.path.exists(file)]
-    else:
-        input_files = askopenfilenames(initialdir = os.getcwd(), filetypes=[("Gcode","*.gcode"), ("Text","*.txt"), ("Other files", "*")])
-    
     params = dict()
     if args.ER:
         params["ER"] = args.ER[0]
@@ -86,6 +81,17 @@ def main():
     if args.params:
         for i in range(0,len(args.params),2):
             params[args.params[i]] = float(args.params[i+1])
+
+    if args.input_file:
+        input_files = [file for file in args.input_file if os.path.exists(file)]
+    else:
+        input_files = askopenfilenames(initialdir = os.getcwd(), filetypes=[("Gcode","*.gcode"), ("Text","*.txt"), ("Other files", "*")])
+        if "ER" not in params:
+            params["ER"] = askfloat("Input", "Input an the extrusion rate")
+        if "ZH" not in params:
+            params["ZH"] = askfloat("Input", "Input an the z-heigth")
+    
+    
 
     for file in input_files:
         parse_file(file, params)
